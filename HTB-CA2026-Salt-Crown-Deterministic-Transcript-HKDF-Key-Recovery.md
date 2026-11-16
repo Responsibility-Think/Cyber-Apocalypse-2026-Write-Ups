@@ -220,7 +220,7 @@ Stroke semantics: `x0 = x + d0`, `y = y + d1`, `x1 = x0 + d2`; draw the horizont
 Full solver: `saltcrown_solve.py` — unpacks, derives, decrypts, rasterises. Reproduction:
 
 ```bash
-cd /home/kali/HTB_CA2026/Salt_Crown
+cd Salt_Crown
 pip install unicorn pefile cryptography
 python3 saltcrown_solve.py challenge_core.windows.template_release.x86_64.dll
 ```

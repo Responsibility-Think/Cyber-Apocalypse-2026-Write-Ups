@@ -306,7 +306,7 @@ Non-standard section. The solve turned on five inputs, and one of them was disgu
 
 ```bash
 # 0. handout
-cd ~/HTB_CA2026/Fault_in_the_Cinder
+cd Fault_in_the_Cinder
 unzip -P hackthebox a252eda0-b568-4641-aaff-5591e270bec1-1784770577.zip
 
 # 1. baseline — invalid signet, NO glitch. Confirms deny, prints the live challenge.
@@ -334,9 +334,9 @@ clamp   : GET cap-<N> VCD.GZ    -> decode SPI -> READ_FIFO -> decrypt
 
 Toolchain (three files, `cinder_attack.py` loads the other two from its own directory):
 
-- `/home/kali/HTB_CA2026/Fault_in_the_Cinder/cinder_signet.py` — builds the 144-byte `RCVT` with zeroed signature
-- `/home/kali/HTB_CA2026/Fault_in_the_Cinder/cinder_capture.py` — VCD/`.sr` loader, SPI decode, frame parse, record reassembly, KDF decrypt
-- `/home/kali/HTB_CA2026/Fault_in_the_Cinder/cinder_attack.py` — `baseline` / `glitch` / `sweep` / `fetch` phases
+- `cinder_signet.py` — builds the 144-byte `RCVT` with zeroed signature
+- `cinder_capture.py` — VCD/`.sr` loader, SPI decode, frame parse, record reassembly, KDF decrypt
+- `cinder_attack.py` — `baseline` / `glitch` / `sweep` / `fetch` phases
 
 ---
 

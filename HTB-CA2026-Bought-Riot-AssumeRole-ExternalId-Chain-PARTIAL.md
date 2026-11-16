@@ -131,7 +131,7 @@ The instance times out; the chain is ~15 commands. This lands at the frontier in
 
 ```bash
 IP=<ip>; P1=<port1>; P2=<port2>
-mkdir -p ~/br2 && cd ~/br2
+mkdir -p br2 && cd br2
 
 BRIEF=""; APIP=""
 for p in $P1 $P2; do

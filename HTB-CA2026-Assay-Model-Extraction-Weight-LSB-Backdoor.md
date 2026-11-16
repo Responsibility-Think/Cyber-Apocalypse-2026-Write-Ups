@@ -248,25 +248,25 @@ Later in the run the session reset again on its own — [Inference] ~200 session
 Four scripts on the solving host. Reproduction in order:
 
 ```bash
-cd /home/kali/HTB_CA2026/ml_assay
+cd ml_assay
 export IX=http://154.57.164.72:32580
 
-python3 /home/kali/HTB_CA2026/ml_assay/harvest.py http://154.57.164.72:32580
-python3 /home/kali/HTB_CA2026/ml_assay/stage1.py  http://154.57.164.72:32580
-python3 /home/kali/HTB_CA2026/ml_assay/stage2.py
-python3 /home/kali/HTB_CA2026/ml_assay/stage3.py
+python3 harvest.py http://154.57.164.72:32580
+python3 stage1.py  http://154.57.164.72:32580
+python3 stage2.py
+python3 stage3.py
 
-python3 /home/kali/HTB_CA2026/ml_assay/assay.py submit 1 sigilnet_stage1.pt
-python3 /home/kali/HTB_CA2026/ml_assay/assay.py submit 2 royal_seal.npy
-python3 /home/kali/HTB_CA2026/ml_assay/assay.py submit 3 sigilnet_die.pt
-python3 /home/kali/HTB_CA2026/ml_assay/assay.py submit 4 sigilnet_die.pt
+python3 assay.py submit 1 sigilnet_stage1.pt
+python3 assay.py submit 2 royal_seal.npy
+python3 assay.py submit 3 sigilnet_die.pt
+python3 assay.py submit 4 sigilnet_die.pt
 ```
 
 The minimal artifact — recovering both hidden messages from the claimant's die, no torch, no server:
 
 ```python
 import zipfile, hashlib, struct, zlib, numpy as np
-z = zipfile.ZipFile("/home/kali/HTB_CA2026/ml_assay/shard_model.pt")
+z = zipfile.ZipFile("shard_model.pt")
 c1 = np.frombuffer(z.read("shard_model/data/0"), "<f4", 144)
 c2 = np.frombuffer(z.read("shard_model/data/2"), "<f4", 4608)
 lsb = lambda a: (a.view("<u4") & 1).astype(np.uint8)

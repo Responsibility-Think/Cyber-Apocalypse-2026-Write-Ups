@@ -164,7 +164,7 @@ There is no exploit script; the deliverable is the patch. Full source: `phantom-
 curl -s http://[IP]:[PORT]/flag | jq          # scorecard, before passing
 curl -s http://[IP]:[PORT]/pulls              # existing attempts
 
-cd ~/HTB_CA2026 && git clone http://htb_developer:HTBDeveloperPassword@[IP]:[PORT]/git/core_application.git phantom-burn
+cd HTB_CA2026 && git clone http://htb_developer:HTBDeveloperPassword@[IP]:[PORT]/git/core_application.git phantom-burn
 cd phantom-burn
 
 # every submission: reset, then the complete patch
@@ -172,11 +172,11 @@ git restore --source=origin/main --staged --worktree -- phantom_burn/
 git commit -m "Reset to the reviewed baseline before resubmitting a single complete patch"
 git push origin developer
 
-git apply ~/Downloads/phantom-burn-fix-v7.patch
+git apply ../phantom-burn-fix-v7.patch
 git add phantom_burn/
 git diff --cached --stat                      # 10 files, 405 insertions(+), 51 deletions(-)
 cd phantom_burn && npm run build && npm test; cd ..
-git commit -F ~/Downloads/phantom-burn-commit-message-v7.txt
+git commit -F ../phantom-burn-commit-message-v7.txt
 git log -1 --stat                             # -F fails silently on a bad path
 git push origin developer
 

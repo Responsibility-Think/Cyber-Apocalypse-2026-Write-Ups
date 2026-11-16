@@ -523,7 +523,7 @@ No account is known for any of the eight other victim hosts. The attacker workst
 ### A — Decrypt the C2 channel (flag 3)
 
 ```bash
-cd ~/HTB_CA2026/Remnant
+cd Remnant
 
 # 1 — identify the suite. 0x1302 = TLS_AES_256_GCM_SHA384 -> 48-byte secrets.
 tshark -r capture.pcap -Y 'tls.handshake.type==2 && tcp.srcport==8443' \
