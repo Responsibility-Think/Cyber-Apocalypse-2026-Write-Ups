@@ -21,7 +21,6 @@ tags:
   - Reverse_Engineering
   - AI_ML
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Cinderbound-MicroPython-MPY-Rolling-XOR]]"
 aliases:
   - Ringtrue
@@ -291,7 +290,6 @@ Concepts: quantised neural network as a keygen · int8 weights with int64 accumu
 
 ## Cross-references
 - [[HTB-CA2026-Cinderbound-MicroPython-MPY-Rolling-XOR]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: symbol-table recon of an unstripped ELF, model extraction from `.data`, exact rational inversion of a three-layer int64-accumulate MLP with slope-2 leaky activation, recovery of the tone vector `SaltCrwn`, SHA-256 keystream derivation of the flag, and confirmation against the running binary. `W_SCALE` identified as unreferenced decoration.

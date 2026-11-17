@@ -27,7 +27,6 @@ tags:
   - Malware_Analysis
   - Windows
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]"
   - "[[HTB-CA2026-First-Mark-RISCV-Custom-Opcode-Recovery]]"
 aliases:
@@ -301,7 +300,6 @@ Concepts: log steganography · covert channel in timestamp fields · XOR string 
 ## Cross-references
 - [[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]
 - [[HTB-CA2026-First-Mark-RISCV-Custom-Opcode-Recovery]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: corpus triage isolating 1 carrier log of 33, recovery of the XOR string-obfuscation layer and all 70 hidden strings, the sscanf trigger path, the region→5-bit hash alphabet (FNV-1a + ror13 + Murmur3 fmix64), conditional field masking, the GMT mix, 32-bit packing and weekday salt, static derivation of the environment-keyed XOR (`0xf07ec6a4`), and extraction of the x64 shellcode carrying the `net user backup_admin` persistence command containing the flag.

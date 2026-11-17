@@ -24,7 +24,6 @@ tags:
   - Reverse_Engineering
   - Cryptography
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]"
   - "[[HTB-CA2026-CorpSyncAudit-Log-Steganography-Shellcode-Dropper]]"
 aliases:
@@ -271,7 +270,6 @@ Concepts: overlapping instructions · self-decrypting code · runtime code gener
 ## Cross-references
 - [[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]
 - [[HTB-CA2026-CorpSyncAudit-Log-Steganography-Shellcode-Dropper]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: four distinct decoys catalogued with the evidence disqualifying each (symbol-name misdirection, the well-formed `b_roll` flag, the unreachable 16-byte SPN answer, the adjacent `H4D5_UP` string, and the "from the top" instruction reading); recovery of the backward-decrypted self-modifying stub and its overlapping-instruction entry point; a custom encryption-oracle harness used to prove the SPN path unreachable; and inversion of the 64-bit mix yielding the flag.

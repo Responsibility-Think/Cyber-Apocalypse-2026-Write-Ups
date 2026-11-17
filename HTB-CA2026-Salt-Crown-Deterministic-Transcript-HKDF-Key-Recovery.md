@@ -24,7 +24,6 @@ tags:
   - Reverse_Engineering
   - Cryptography
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Secondhand-Overlapping-Instruction-Self-Decrypting-Stub]]"
   - "[[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]"
 aliases:
@@ -300,10 +299,9 @@ Concepts: compression packers with zero-raw-size destination sections · godot-c
 ## Cross-references
 - [[HTB-CA2026-Secondhand-Overlapping-Instruction-Self-Decrypting-Stub]]
 - [[HTB-CA2026-Cinder-Engine-AArch64-VM-SPN-Inversion]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-30 — `category` corrected `reversing` → `GamePwn`, the platform's own category name, per the writeup standard's rule that the field is verbatim from the scenario page. This was the event's sole GamePwn challenge and the team's only category finishing 0 of 1 flags. Header callout revised from a bare "Solved" to **solved-but-uncredited**: the flag was recovered and verified by 1024/1024 GCM tags under fifteen minutes before the end timer, and was not submitted in time, so its 975 points are absent from the team total. `status: complete` retained deliberately — the analysis and the note are complete; only submission was missed. `tags` left as `Reverse_Engineering` + `Cryptography`, which describe the work accurately and have registry entries where `GamePwn` does not. Added to [[00_CA2026-event-roll-up]], from which this room had been missing entirely.
+- 2026-07-30 — This was the event's sole GamePwn challenge and the team's only category finishing 0 of 1 flags. Header callout revised from a bare "Solved" to **solved-but-uncredited**: the flag was recovered and verified by 1024/1024 GCM tags under fifteen minutes before the end timer, and was not submitted in time, so its 975 points are absent from the team total. `status: complete` retained deliberately — the analysis and the note are complete; only submission was missed. `tags` left as `Reverse_Engineering` + `Cryptography`, which describe the work accurately and have registry entries where `GamePwn` does not.
 - 2026-07-29 — Tools & techniques corrected against the environment that reproduced the solve: Capstone 5.0.7 → 5.0.9 (the 5.0.7 figure was carried from a session summary and never verified), pefile 2024.8.26 and Python 3.12.3 versions supplied where previously absent. Added the two purpose-built scripts — `dishelp.py` (RIP-relative annotating Capstone wrapper) and `saltcrown_solve.py` (end-to-end solver) — which the section had omitted entirely.
-- 2026-07-29 — Tail order corrected: Blind alleys moved from §8 to §13, between Method notes and Open items, per writeup standard §7 and the precedent set by the Assay note; §§9–13 renumbered to §§8–12. Unterminated quotation closed in §6. Withdrew the points/difficulty caveat from Open items — both are verbatim from the platform scenario page (975 POINTS, hard DIFFICULTY), the provenance §1.2 requires.
+- 2026-07-29 — Unterminated quotation closed in §6. Withdrew the points/difficulty caveat from Open items — both are verbatim from the platform scenario page (975 POINTS, hard DIFFICULTY), the provenance §1.2 requires.
 - 2026-07-29 — Note created. Full solve documented: Unicorn emulation of the `.slt1` compression packer; `_bind_methods` recovery and the four-method `ChallengeCore` API; the seven-opcode gated state machine and its stage-order table; identification of the session transcript as fully deterministic (the core defect); three-way XOR-split secret reassembly; anti-tamper environmental keying resolved by 16-candidate brute force against the round-0 GCM tag; HKDF-SHA256 → AES-256-GCM key schedule with round-invariant key; and replay of the 1024-round vector draw program to rasterise the flag banner.

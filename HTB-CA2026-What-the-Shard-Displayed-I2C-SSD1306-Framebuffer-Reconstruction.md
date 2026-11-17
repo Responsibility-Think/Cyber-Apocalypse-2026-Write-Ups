@@ -25,8 +25,6 @@ tags:
   - logic-analysis
   - detection
 related:
-  - "[[HTB]]"
-  - "[[CA2026-Hardware-category-kickoff]]"
   - "[[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]"
 aliases:
   - What the Shard Displayed
@@ -298,9 +296,7 @@ Split into what the *implant* did and what the *recovery* did — the second hal
 - Neither residue was needed; if a later challenge in this event reuses the device, revisit both
 
 ## Cross-references
-- [[CA2026-Hardware-category-kickoff]]
 - [[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: 2 MHz two-wire capture decoded as 95.2 kHz I2C; three devices (SSD1306 `0x3C`, EEPROM `0x50`, RTC `0x68`); 196 OLED transfers reconstructed into three 1,024-byte framebuffers via horizontal-addressing page-major geometry; frame 3 glyph-segmented to the flag. ATT&CK mapping split into implant tradecraft and readout technique, with IDs flagged unverified. EEPROM blob and RTC/display time mismatch recorded as unresolved residue, neither required for the solve.

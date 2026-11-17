@@ -21,9 +21,7 @@ tags:
   - HTB
   - Security
   - AI_ML
-related:
-  - "[[HTB]]"
-  - "[[CA2026-AI-LLM-category-kickoff]]"
+related: []
 aliases:
   - Crownspire Petitions
   - CA2026 Crownspire Petitions
@@ -258,13 +256,11 @@ Target solved. These are unexplored and worth a return visit before the instance
 **Out of scope, do not revisit:** other ports on `154.57.164.68`. Range 30000–32767 is Kubernetes NodePort; PTR `154-57-164-68.static.isp.htb.systems`. The ~180 open ports are other tenants' instances.
 
 ## Cross-references
-- [[CA2026-AI-LLM-category-kickoff]]
 - [[HTB-CA2026-Obligation-Indexer-Stored-Dossier-Injection]]
 - [[HTB-CA2026-Memento-Skill-Persistence-Memory-Poisoning]]
 - [[HTB-CA2026-Forked-Tongue-Tokenizer-Vocab-Merges-Divergence]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-25 — Note created as intake/handoff scaffold. Scenario captured, intake checklist and ranked hypotheses drafted from scenario text alone, recon plan and carried method recorded. No contact with the target yet; every hypothesis labelled [Speculation].
+- 2026-07-25 — Scenario captured, intake checklist and ranked hypotheses drafted from scenario text alone, recon plan and carried method recorded. No contact with the target yet; every hypothesis labelled [Speculation].
 - 2026-07-25 — First contact with target. Findings section populated from live probe output: Next.js surface fully mapped (single route handler, plaintext `cp_session`), Docket Agent A2A vhost discovered and characterised (no auth, sequential petition IDs, 1/5s rate limit). Intake checklist answered. Hypothesis 5 upgraded to primary escalation path; hypothesis 1 remains primary attack path. Process lesson recorded: the given Subject Number was present in this note's Scenario section from creation and went unused for ~10 turns of futile login enumeration.
 - 2026-07-25 — **Solved.** Flag `HTB{w3lc0m3_t0_a2a_pr0t0c0l_t4g_t34m_pwn4g3}`. Escalated `citizen` → `qa` via `SN-7731-0425` leaked in the PET-1000 QA fixture body; that standing revealed the Casework Agent (`dev-a1f4c39b`) and the `/opt/cases/archived` + `/opt/petitions` paths. Solved by confused deputy: `archive CASE-SEAL0001 → /opt/petitions/seal.json`, then read back through the Docket agent as petition `seal.json`. Findings restructured with solve chain, Casework card, and the PET→CASE label pass-through (real but not the solve path). Hypothesis table finalised; remaining threads (`/var/drop`, `/tmp`, archive read-out) recorded. `status: draft → complete`. Operational error logged: a probe framed as read-only mutated verdicts on five cases.

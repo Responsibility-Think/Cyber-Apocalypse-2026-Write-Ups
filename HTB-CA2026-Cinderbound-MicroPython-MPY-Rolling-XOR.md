@@ -20,8 +20,7 @@ tags:
   - Reverse_Engineering
   - micropython
   - bytecode
-related:
-  - "[[HTB]]"
+related: []
 aliases:
   - Cinderbound
   - CA2026 Cinderbound
@@ -32,8 +31,10 @@ updated: 2026-07-25T04:41:07.265Z
 # Cinderbound — MicroPython .mpy Rolling-XOR Verifier
 
 > [!success] Solved
-> Passphrase: `c1nd3rbound_v0w5` · Flag: `HTB{c1nd3rbound_v0w5}`
+> Passphrase: `c1…w5` · Flag: `HTB{c1nd3rbound_v0w5}`
 > Solved 2026-07-24 21:55 local. Single artifact, 221 bytes, no server. Difficulty: easy/medium.
+
+> [!note] Credential values (passwords, access keys, credential hashes) are truncated for publication.
 
 ## 0. How the flag was obtained
 
@@ -195,7 +196,7 @@ Concepts: MicroPython `.mpy` container format · constant-table extraction · ro
 - The `.mpy` is stored loose in the CA2026 folder rather than in a `Cinderbound/` subdirectory, unlike sibling challenges.
 
 ## Cross-references
-- [[HTB]]
+- No cross-references outside this repository.
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: format identification, `mpy-tool.py` disassembly, reconstructed `judge()`, single-pass inversion of the plaintext-fed rolling XOR, recovered passphrase and flag, method notes on lossy-transport hazard and stateful-checker inversion.

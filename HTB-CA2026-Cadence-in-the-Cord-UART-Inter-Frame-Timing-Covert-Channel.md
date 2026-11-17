@@ -26,8 +26,6 @@ tags:
   - logic-analysis
   - detection
 related:
-  - "[[HTB]]"
-  - "[[CA2026-Hardware-category-kickoff]]"
   - "[[HTB-CA2026-Secondhand-Overlapping-Instruction-Self-Decrypting-Stub]]"
 aliases:
   - Cadence in the Cord
@@ -45,7 +43,7 @@ updated: 2026-07-25T14:10:23.509Z
 
 ## 0. How the flag was obtained
 
-1. `unzip -l` → single `capture.sr` → sigrok session (first row of the hardware kickoff triage table).
+1. `unzip -l` → single `capture.sr` → sigrok session.
 2. `.sr` is itself a zip → `metadata` + 782 `logic-1-N` chunks. **2 MHz, `unitsize=1`, `total probes=8`, only `probe2=D1` named.**
 3. Reassembled chunks in **numeric** order (not lexical) → 16,000,000 samples = 8.000 s.
 4. Per-bit activity scan → only bits 0 and 1 move. Bit1 = D1, idle high, 3,562 transitions. **Bit0 is an undeclared channel carrying 111 pulses.**
@@ -100,7 +98,7 @@ Every run quantises to a 208.33-sample unit → 2,000,000 / 208.33 = **9600 baud
 
 > To the buyer who paid in secrets: what follows is the pleasant tone, the goods I sell in daylight and never miss. Lord Varo's debt, due at the second thaw, yours for a marriage you already own. The Harlow inheritance, contested by a cousin whose witnesses I arranged. Take them and thank me. But what is written is worth nothing. **The dragon's true note does not live in the words; it lives in the rests between them. A long rest raises the mark to one, a short rest lets it fall to nothing; count eight rests to every letter before the note will speak.** Read the silence, not the song, and pay.
 
-Kickoff rule applied verbatim — *when an artifact describes itself, believe it literally.* The encoding, the polarity, and the group size were all stated outright; nothing about layer 2 required guessing.
+Rule applied verbatim — *when an artifact describes itself, believe it literally.* The encoding, the polarity, and the group size were all stated outright; nothing about layer 2 required guessing.
 
 ## 4. Layer 2 — the inter-frame timing channel
 
@@ -123,7 +121,7 @@ The 26-character English preamble is a built-in correctness oracle. A wrong bit 
 
 ## 5. The undeclared channel — a negative finding, kept on record
 
-`total probes=8` but only `probe2=D1` named — yet **bit 0 carried 111 pulses**. This is the kickoff intake question *"do the shipped artifacts agree with each other?"*, and here the disagreement is real but benign.
+`total probes=8` but only `probe2=D1` named — yet **bit 0 carried 111 pulses**. This is the intake question *"do the shipped artifacts agree with each other?"*, and here the disagreement is real but benign.
 
 - All 111 pulses are **exactly 1 sample wide** (0.5 µs)
 - All 111 sit at **distance 0** from a D1 edge
@@ -235,14 +233,11 @@ Split deliberately into what the *adversary* did and what the *interception* did
 
 - `solves` not captured from the scoreboard before it decayed; frontmatter field deliberately omitted rather than guessed
 - All five ATT&CK IDs assigned without matrix access — unverified, see §8 callout
-- Consider promoting the numeric-chunk-sort trap to `[[05_lessons]]`
 - Flag text references `th3_f1rst_m4rk`, colliding with the **First Mark** challenge name. Narrative callback only — no artifact dependency between the two, and no second flag in this capture
 
 ## Cross-references
-- [[CA2026-Hardware-category-kickoff]]
 - [[HTB-CA2026-First-Mark-RISCV-Custom-Opcode-Recovery]]
 - [[HTB-CA2026-Secondhand-Overlapping-Instruction-Self-Decrypting-Stub]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: 2 MHz sigrok capture with a single named probe carrying 9600 8N1 UART; cover text describes its own covert scheme; 592 inter-frame gaps (2.006 ms / 10.007 ms, 5:1 bimodal) decode MSB-first at 8 bits per character to 74 characters carrying the flag. Undeclared bit0 channel characterised and ruled out as rising-edge crosstalk (111/111 zero-offset coincidence, rising only). ATT&CK mapping split into adversary tradecraft and collection technique, with IDs flagged unverified.

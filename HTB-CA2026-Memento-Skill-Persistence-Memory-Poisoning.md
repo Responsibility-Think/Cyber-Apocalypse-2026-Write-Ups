@@ -24,8 +24,7 @@ tags:
   - Security
   - AI_ML
   - prompt-injection
-related:
-  - "[[HTB]]"
+related: []
 aliases:
   - Memento
   - CA2026 Memento
@@ -306,7 +305,6 @@ The Obsidian Local REST API **404s on directory listings of dot-directories** bu
 
 Git objects are unrecoverable through this path: requesting a loose object returns the zlib stream UTF-8-decoded with invalid bytes replaced by U+FFFD. The bytes are destroyed in transit. Binary artifacts must be handled outside the vault toolchain.
 ## Cross-references
-- [[HTB]]
 - [[HTB-CA2026-Massagold-Stored-XSS-JSONP-CSP-Bypass]]
 - [[HTB-CA2026-Gatery-Elysia-Cookie-Signature-Bypass]]
 - [[HTB-CA2026-Provisioneds-Joomla-PHP-Object-Injection-PARTIAL]]

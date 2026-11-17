@@ -21,8 +21,7 @@ tags:
   - stored-xss
   - csp-bypass
   - jsonp
-related:
-  - "[[HTB]]"
+related: []
 aliases:
   - Massagold
   - Rookery
@@ -172,7 +171,7 @@ Concepts: stored XSS · CSP allow-list abuse · JSONP callback reflection · in-
 - `messages` table carries an unused `location_url` column — no code touches it.
 
 ## Cross-references
-- [[HTB]]
+- No cross-references outside this repository.
 
 ## Change Log
 - 2026-07-24 — Initial write-up. Flag, payload, CSP text, and observed request chain preserved verbatim from the live run.

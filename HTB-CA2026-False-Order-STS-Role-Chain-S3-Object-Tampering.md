@@ -27,7 +27,6 @@ tags:
   - cloudtrail
   - anti-forensics
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]]"
 aliases:
   - False Order
@@ -41,6 +40,8 @@ updated: 2026-07-26T16:45:16.902Z
 > [!success] Solved
 > Twelve graded short-answer questions, no `HTB{}` string. Ephemeral LocalStack instance `154.57.164.72` — briefing `:31839`, AWS API `:31274`.
 > Third CA2026 cloud room and the second on this harness. The [[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]] collection pattern transferred directly; total working time was a fraction of that room's.
+
+> [!note] Credential values (passwords, access keys, credential hashes) are truncated for publication.
 
 ## 0. How the answers were obtained
 
@@ -217,8 +218,8 @@ jq -r '.[] | [.sourceIPAddress, (.userIdentity.arn // .userIdentity.type)] | @ts
 
 Supporting identifiers:
 
-- Attacker access key `AKIA8SCD5KRQ11LPT88P` — identical across all three `AssumeRole` calls
-- Temporary key issued by the successful assume: `ASIAO3A13FJKN5BKIT7L`, `assumedRoleId` `AROAKQ08OJ1KG8CR7ZCK:coalition-gate-clerk`
+- Attacker access key `AKIA…T88P` — identical across all three `AssumeRole` calls
+- Temporary key issued by the successful assume: `ASIA…IT7L`, `assumedRoleId` `AROAKQ08OJ1KG8CR7ZCK:coalition-gate-clerk`
 - Account `638291047582`; attack window `13:38:04.595Z` → `13:38:05.309Z`
 - `eventID` of the successful assume: `830fa02f-8dd2-4524-bd54-ea513d511b70`
 
@@ -275,7 +276,6 @@ Concepts: STS role-chain reconstruction · `roleSessionName` impersonation · S3
 ## Cross-references
 - [[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]] — same harness, same collection pattern, same attacker runtime fingerprint. Read together for the family conventions.
 - [[HTB-CA2026-Bought-Riot-AssumeRole-ExternalId-Chain-PARTIAL]] — the offensive mirror of this room: there the S3 non-current version had to be recovered to *progress*, here it is recovered as *evidence*.
-- [[HTB]]
 
 ## Change Log
 - 2026-07-26 — Note created. Documents the two-store correlation (CloudTrail × S3 version history), the zsh probe bug that reported seven false denials, the four-population split, the three-AssumeRole / two-role trap that separates Q5 from Q9, the `roleSessionName` impersonation that misattributes the destructive calls to the victim clerk, and the twelve submitted answers.

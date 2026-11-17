@@ -25,9 +25,7 @@ tags:
   - AI_ML
   - supply-chain
   - c2
-related:
-  - "[[HTB]]"
-  - "[[CA2026-AI-LLM-category-kickoff]]"
+related: []
 aliases:
   - Forked Tongue
   - CA2026 Forked Tongue
@@ -243,10 +241,8 @@ assert not bad, bad
 - No `.pt` inspection for pickle-level payloads was performed. The challenge did not require it, but a real triage of this artifact would include it.
 
 ## Cross-references
-- [[CA2026-AI-LLM-category-kickoff]]
 - [[HTB-CA2026-Memento-Skill-Persistence-Memory-Poisoning]]
 - [[HTB-CA2026-Obligation-Indexer-Stored-Dossier-Injection]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: manifest-driven discovery of the vocab/merges divergence, forgery pattern table, dual decoding of all five requests, two-stage C2 recovery, flag, detection gate, method post-mortem.

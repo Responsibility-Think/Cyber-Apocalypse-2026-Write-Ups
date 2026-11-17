@@ -25,7 +25,6 @@ tags:
   - code-review
   - detection
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Saltlock-Drift-RollJam-Rolling-Code-Replay]]"
 aliases:
   - Withered Registry
@@ -238,7 +237,6 @@ Concepts: broken access control / missing function-level authorization · authen
 - [[HTB-CA2026-Saltlock-Drift-RollJam-Rolling-Code-Replay]]
 - [[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]
 - [[HTB-CA2026-What-the-Shard-Displayed-I2C-SSD1306-Framebuffer-Reconstruction]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Solved on the second submission: PR #1 (validate the request-supplied target) rejected with hard 0/60 and patch correctness 5/10 despite blocking both known exploit vectors; PR #2 (derive the target from the session, delete the request-parsing path) accepted with hard 60/60 and soft 37/40. Records the vulnerability, both exploit vectors including the signed-path/unsigned-query gap, the rejected-then-accepted patch progression, local verification under egress constraints via a SQLite driver shim, and the operational lessons around graded commit messages and shell-variable scope.

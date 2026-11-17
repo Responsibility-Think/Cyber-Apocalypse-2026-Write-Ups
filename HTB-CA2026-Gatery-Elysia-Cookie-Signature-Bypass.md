@@ -20,8 +20,7 @@ tags:
   - auth-bypass
   - session-forgery
   - cookie-signing
-related:
-  - "[[HTB]]"
+related: []
 aliases:
   - Gatery
   - CA2026 Gatery
@@ -126,7 +125,7 @@ Concepts: signed-cookie forgery · authentication bypass via dependency defect �
 - Pinned exact dependency versions in `package.json` (`"elysia": "1.4.18"`, no caret) are a signal that the version itself is the challenge.
 
 ## Cross-references
-- [[HTB]]
+- No cross-references outside this repository.
 
 ## Change Log
 - 2026-07-24 — Initial write-up. Source excerpt, PoC output, and exploit request preserved from the live analysis.

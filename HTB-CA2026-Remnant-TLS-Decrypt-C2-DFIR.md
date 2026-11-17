@@ -34,9 +34,7 @@ tags:
   - c2
   - packet-capture
   - detection
-related:
-  - "[[HTB]]"
-  - "[[DFIR Custom Toolkit]]"
+related: []
 aliases:
   - Remnant
   - CA2026 Remnant

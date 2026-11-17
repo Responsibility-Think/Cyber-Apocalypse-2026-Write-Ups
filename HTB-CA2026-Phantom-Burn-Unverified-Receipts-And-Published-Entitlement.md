@@ -21,7 +21,6 @@ tags:
   - authorization
   - code-review
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Hollow-Courier-XFF-Hop-Count-Trust-Boundary]]"
 aliases:
   - Phantom Burn
@@ -37,6 +36,8 @@ updated: 2026-07-27T14:40:24.347Z
 > PR #17 accepted — **hard 60/60 · code quality 14 · security reasoning 14 · patch correctness 8** (soft 36/40).
 > Fourth **secure-coding** solve, and the first `hard` one. `hard` · 975 points.
 > **Seventeen pull requests across seven distinct patches.** No single submission was close; each rejection named exactly one more layer.
+
+> [!note] Credential values (passwords, access keys, credential hashes) are truncated for publication.
 
 > [!info] Scenario, verbatim
 > Caldrin Vowmark receives an Ash-Vault receipt that passes every local check, although no rightful keeper issued it. A sealed source transfer begins when the next burn is finalised. If the receipt is accepted first, the hidden hand gains the Ash-Vault's source bundle and can manufacture more receipts that appear lawful to every Eastreach verifier. Caldrin must discover how the counterfeit survives the weighing, stop the transfer, restore the witness chain, and preserve one legitimate owner unlock.
@@ -146,7 +147,7 @@ The grader is a bisection instrument, not a pass/fail oracle. Each rejection nam
 
 Even-numbered PRs are deliberate baseline resets. **Increment-scoped review, established in Hollow Courier, applies here unchanged** — PR #2's reset scored 6/3/1 in isolation, confirming the model outright. Every real submission therefore cost two pushes: one to restore `main`'s tree, one to land the complete patch.
 
-**Patch correctness was the weakest objective on every single submission** — 5, 5, 9, 4, 5, 8 — against 12–14 on the other two throughout. Three rooms now, same pattern, and the kickoff's rule held every time: when it lags while the others sit comfortably, the design is wrong and rewriting the justification will not move it.
+**Patch correctness was the weakest objective on every single submission** — 5, 5, 9, 4, 5, 8 — against 12–14 on the other two throughout. Three rooms now, same pattern, and the same rule held every time: when it lags while the others sit comfortably, the design is wrong and rewriting the justification will not move it.
 
 ## 6. Local verification
 
@@ -164,7 +165,7 @@ There is no exploit script; the deliverable is the patch. Full source: `phantom-
 curl -s http://[IP]:[PORT]/flag | jq          # scorecard, before passing
 curl -s http://[IP]:[PORT]/pulls              # existing attempts
 
-cd HTB_CA2026 && git clone http://htb_developer:HTBDeveloperPassword@[IP]:[PORT]/git/core_application.git phantom-burn
+cd HTB_CA2026 && git clone http://htb_developer:HT…rd@[IP]:[PORT]/git/core_application.git phantom-burn
 cd phantom-burn
 
 # every submission: reset, then the complete patch
@@ -253,7 +254,6 @@ Concepts: verification functions that discard their configuration · event-signa
 - [[HTB-CA2026-Withered-Registry-Broken-Access-Control-Privileged-Write]]
 - [[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]]
 - [[HTB-CA2026-Caldrins-Day-Away-Stamped-Oracle-Spot-Reserve-Manipulation]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-27 — Note created. First `hard` secure-coding solve, accepted at PR #17 with hard 60/60 and soft 36/40 after seven distinct patches across seventeen pull requests. Records five layered defects — a verifier that discarded its own configuration and never contacted the chain, event decoding without emitter binding, grants assembled from request fields, an unkeyed token over public values, and a registry that published the entitlement itself — together with the verbatim grader verdict that revealed each. Documents the three falsified leads (confirmations depth, the caller-supplied archive-key preimage, session-gating) with the reasoning that produced them, since two were acted on before being disproved. Confirms increment-scoped review a second time: PR #2's baseline reset scored 6/3/1 in isolation. Patch correctness was the weakest objective on all seven submissions, holding the kickoff's rule for a third room.
+- 2026-07-27 — Note created. First `hard` secure-coding solve, accepted at PR #17 with hard 60/60 and soft 36/40 after seven distinct patches across seventeen pull requests. Records five layered defects — a verifier that discarded its own configuration and never contacted the chain, event decoding without emitter binding, grants assembled from request fields, an unkeyed token over public values, and a registry that published the entitlement itself — together with the verbatim grader verdict that revealed each. Documents the three falsified leads (confirmations depth, the caller-supplied archive-key preimage, session-gating) with the reasoning that produced them, since two were acted on before being disproved. Confirms increment-scoped review a second time: PR #2's baseline reset scored 6/3/1 in isolation.

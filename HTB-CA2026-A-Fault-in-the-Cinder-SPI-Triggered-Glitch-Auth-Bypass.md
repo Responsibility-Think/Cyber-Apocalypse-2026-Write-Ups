@@ -23,8 +23,6 @@ tags:
   - embedded
   - detection
 related:
-  - "[[HTB]]"
-  - "[[CA2026-Hardware-category-kickoff]]"
   - "[[HTB-CA2026-Saltlock-Drift-RollJam-Rolling-Code-Replay]]"
   - "[[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]"
   - "[[HTB-CA2026-What-the-Shard-Displayed-I2C-SSD1306-Framebuffer-Reconstruction]]"
@@ -45,9 +43,6 @@ updated: 2026-07-30T02:21:09.350Z
 
 > [!info] Scenario, verbatim
 > Keir's routes cut a Vaultrune confiscation convoy and lifted a Cinderbound custody coffer, and what it holds is worth a house: proof, under the Black Heir's own hand, of what Cassian means to do to Suncourt once it has served him. Breaking the shell burns the record, so it must be recovered without forcing it: learn the ritual of authority the coffer expects of a Vaultrune auditor, forge a single instant of it, and listen as the old ward speaks the sealed word to a bearer it was never meant to trust.
-
-> [!note] Structure note — deliberate deviation from `00_ctf-writeup-standard`
-> This note adds an unnumbered **Executive brief** ahead of §0, adds **§7 Evidence chain**, and widens the canonical *Detection / blue-team & fix notes* slot into **§11 Detection, hardening & defensive strategy**. The mandated tail order (Final payload → Tools → MITRE → Detection → Method notes → Open items) is preserved, with `Blind alleys` inserted per standard §7. Deviations are deliberate and recorded here so a later reader does not read them as drift. Rationale: the defensive lesson in this room generalises further than the exploit does, and the decisive input was a *reference* artifact nobody would think to open — neither fits the rigid template.
 
 ---
 
@@ -443,7 +438,7 @@ Each entry states what is not known **and what would settle it**. Nothing is omi
 
 **Metadata**
 
-- **`solves` — not captured, frontmatter field absent.** The scenario page was read for `points: 975` and `difficulty: hard`, but the solve count at time of solve was never recorded, and standard §1.2 forbids guessing it. **To resolve:** read it off the HTB scoreboard while the event is live (closes 2026-07-29). After close, the at-solve-time figure is likely unrecoverable; any later reading is a different measurement and should be recorded with its own date rather than backfilled here.
+- **`solves` — not captured, frontmatter field absent.** The scenario page was read for `points: 975` and `difficulty: hard`, but the solve count at time of solve was never recorded, and it is not guessed here. **To resolve:** read it off the HTB scoreboard while the event is live (closes 2026-07-29). After close, the at-solve-time figure is likely unrecoverable; any later reading is a different measurement and should be recorded with its own date rather than backfilled here.
 - **`points: 975` is a correct-at-the-time snapshot, not a constant.** It drifts downward with solve count across this event. **To resolve:** nothing required — pair it with `solves` once known so the pair stays interpretable, per the event roll-up's convention.
 
 **Classification**
@@ -479,18 +474,15 @@ Each entry states what is not known **and what would settle it**. Nothing is omi
 
 **Structure**
 
-- **This note deviates from `00_ctf-writeup-standard` in three documented ways** (see the structure callout at the head): an unnumbered Executive brief, a non-standard §7 Evidence chain, and a widened §11. **To resolve:** if the standard adopts any of these as optional sections, update it and remove this item; if it rejects them, this note is a sanctioned exception and should be listed in standard §6 as such rather than silently corrected.
 
 ---
 
 ## Cross-references
-- [[CA2026-Hardware-category-kickoff]]
 - [[HTB-CA2026-Saltlock-Drift-RollJam-Rolling-Code-Replay]]
 - [[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]
 - [[HTB-CA2026-What-the-Shard-Displayed-I2C-SSD1306-Framebuffer-Reconstruction]]
 - [[HTB-CA2026-Cinderbound-MicroPython-MPY-Rolling-XOR]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-30 — The two prose references to the writeup standard updated to its post-rename filename (`00_ctf-writeup-standard`). Both are backticked filenames rather than wikilinks, so Obsidian's rename refactor did not reach them.
-- 2026-07-27 — Note created. Solved: three-service remote fault bench; boot ROM disassembled to locate the authorization gate at `0x118 beq #0x30` and derive the glitch delay as `254 + 8N` where `N = (challenge[0] ^ challenge[15]) & 0x1f` from a challenge-keyed spin loop at `0xd4`–`0xe8`. 144-byte `RCVT` signet built with zeroed ECDSA signature so the spine forwards it and the ward denies it; one-byte trigger `PATTERN 13 MASK ff` on the echoed opcode removed any dependence on knowing the `AUTH_DENIED` status value. Glitch landed first attempt at `DELAY 366 WIDTH 10`. Record recovered by extracting both firmware images from the handout's `factory_spi.sr` flash capture (both SHA-256-verified against their manifests), disassembling `fw_recovery.bin` to recover the HMAC-SHA256 session KDF, and confirming the session key via the per-chunk MAC used as an oracle. ATT&CK mapping split attack/collection, all IDs flagged unverified, CWE-1247 named as the accurate classification. §13 Blind alleys records six eliminated technical paths; §14 Open items states a resolution condition for every unknown rather than omitting unrecorded values. **Three deliberate deviations from the writeup standard, recorded in the head callout and §14: an unnumbered Executive brief with defensive talking points and prioritised hardening; a non-standard §7 Evidence chain mapping each input to the decisive fact it produced and whether the solve survives without it; and §11 widened from *Detection / blue-team & fix notes* to *Detection, hardening & defensive strategy*. Canonical tail order preserved.**
+- 2026-07-30 — Both are backticked filenames rather than wikilinks, so Obsidian's rename refactor did not reach them.
+- 2026-07-27 — Note created. Solved: three-service remote fault bench; boot ROM disassembled to locate the authorization gate at `0x118 beq #0x30` and derive the glitch delay as `254 + 8N` where `N = (challenge[0] ^ challenge[15]) & 0x1f` from a challenge-keyed spin loop at `0xd4`–`0xe8`. 144-byte `RCVT` signet built with zeroed ECDSA signature so the spine forwards it and the ward denies it; one-byte trigger `PATTERN 13 MASK ff` on the echoed opcode removed any dependence on knowing the `AUTH_DENIED` status value. Glitch landed first attempt at `DELAY 366 WIDTH 10`. Record recovered by extracting both firmware images from the handout's `factory_spi.sr` flash capture (both SHA-256-verified against their manifests), disassembling `fw_recovery.bin` to recover the HMAC-SHA256 session KDF, and confirming the session key via the per-chunk MAC used as an oracle. ATT&CK mapping split attack/collection, all IDs flagged unverified, CWE-1247 named as the accurate classification. §13 Blind alleys records six eliminated technical paths; §14 Open items states a resolution condition for every unknown rather than omitting unrecorded values. Canonical tail order preserved.**

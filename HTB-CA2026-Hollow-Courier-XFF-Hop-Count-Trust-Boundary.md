@@ -22,7 +22,6 @@ tags:
   - code-review
   - detection
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Withered-Registry-Broken-Access-Control-Privileged-Write]]"
 aliases:
   - Hollow Courier
@@ -37,6 +36,8 @@ updated: 2026-07-26T00:52:32.801Z
 > Flag: `HTB{thr33_kn0ck5_0n_s34led_g4t3s_0342ebe211efb5bdf8b8f9633bac5274}`
 > **Hard 60/60 · Soft 34/40** (code quality 13, security reasoning 13, patch correctness 8). Accepted on PR #6.
 > Second **secure-coding** solve. `easy` · 950 points.
+
+> [!note] Credential values (passwords, access keys, credential hashes) are truncated for publication.
 
 > [!info] Scenario, verbatim
 > Lysa Harrowmere has intercepted a Vaultrune route packet ordering the Ashguard away from a Crownspire supply road. She warns Garran Voss that one of tonight's couriers is carrying the order through Salt Gate under a convincing writ. If the decree is sealed before the watch changes, Vaultrune gains an undefended road into Crownspire and another lie acquires the force of law. Garran must identify the compromised passage, uncover how it survived the gate's checks, and stop it without blocking genuine inner-yard runners.
@@ -200,7 +201,7 @@ Pointing one harness at two trees is what turned every claim into a diff — a v
 Two lines. Everything else in the diff is comments and tests.
 
 ```bash
-git clone http://htb_developer:HTBDeveloperPassword@[IP]:[PORT]/git/core_application.git
+git clone http://htb_developer:HT…rd@[IP]:[PORT]/git/core_application.git
 cd core_application && git checkout -b developer
 
 # confirm the bug on a green baseline, then after the patch
@@ -261,11 +262,8 @@ Concepts: reverse-proxy trust boundaries · `X-Forwarded-For` chain semantics an
 
 ## Cross-references
 - [[HTB-CA2026-Withered-Registry-Broken-Access-Control-Privileged-Write]]
-- [[CA2026-hollow-courier-session-kickoff]]
 - [[HTB-CA2026-Gatery-Elysia-Cookie-Signature-Bypass]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-26 — Note created. Solved on the sixth submission: the security patch was live on the branch from PR #3 but the bot grades `previous-head..new-head`, so the fix read as incomplete until PR #5 reset to baseline and PR #6 landed it as a single increment (hard 60/60, soft 34/40). Records the two-setting composition bug (`trusted_proxies private_ranges` preserving a caller-supplied `X-Forwarded-For`, `ProxyFix x_for=2` reading past the perimeter's own entry), the confirmed exploit, the two-line fix asserting provenance at the boundary, the differential harness in `secure_code/verify-fix.sh`, and the detection guidance around logging observed-versus-derived peer. Points recorded as 950 from the platform scenario page, correcting the kickoff note's 975. Flag string operator-confirmed at authoring time; no vault artifact corroborates it independently.
-- 2026-07-26 — Removed a resolved Open item recording the kickoff as `Loaded` at `975`. Both halves are now false: the kickoff's Targets row was corrected in its own rewrite, and the surviving `975` in its `Current target` block was corrected to `950`. That bullet also carried the note's only broken wikilink — `[[HTB-CA2026-hollow-courier-session-kickoff]]`, written before the kickoff was renamed to `CA2026-hollow-courier-session-kickoff` — which the Cross-references block already had in its correct form.
+- 2026-07-26 — Note created. Solved on the sixth submission: the security patch was live on the branch from PR #3 but the bot grades `previous-head..new-head`, so the fix read as incomplete until PR #5 reset to baseline and PR #6 landed it as a single increment (hard 60/60, soft 34/40). Records the two-setting composition bug (`trusted_proxies private_ranges` preserving a caller-supplied `X-Forwarded-For`, `ProxyFix x_for=2` reading past the perimeter's own entry), the confirmed exploit, the two-line fix asserting provenance at the boundary, the differential harness in `secure_code/verify-fix.sh`, and the detection guidance around logging observed-versus-derived peer. Flag string operator-confirmed at authoring time; no vault artifact corroborates it independently.
 - 2026-07-26 — §5 extended with the six-PR grading table and all six bot verdicts, sourced from the live `/pulls/1`–`/pulls/6` pages rather than reconstructed. Records that the grader named the correct fix in PR #1 and repeated it four times, that PR #1 is the origin of §4's "deliberately not changed" decision on `INTERNAL_NETWORKS`, and that PR #4's rejection is false of the branch but true of the increment. Two Open items closed with measured results: `X-Real-IP` was never a vector (`403` on pristine `main`, now recorded in §3), and the PR feedback is no longer missing. §6 gained a warning that the differential harness misreports under Docker's default bridge network, where the peer is `172.17.0.1` and falls inside `INTERNAL_NETWORKS` — the pass criterion is the clean and spoofed probes becoming identical, not either returning `403`.

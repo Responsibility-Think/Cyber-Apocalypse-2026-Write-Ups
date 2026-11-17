@@ -25,7 +25,6 @@ tags:
   - privilege-escalation
   - confused-deputy
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]]"
 aliases:
   - Bought Riot
@@ -350,7 +349,6 @@ Concepts: config-store-driven role pivots · external-ID confused-deputy design 
 
 ## Cross-references
 - [[HTB-CA2026-Wrong-Stamp-CloudTrail-Credential-Reuse-Log-Disablement]] — the other CA2026 cloud room; same LocalStack harness, same two-port fingerprinting, same "one signal row among hundreds of decoys" construction, and the same trap of a decoy that is chronologically or structurally first. Worth reading together for the harness conventions.
-- [[HTB]]
 
 ## Correction — probe-harness bug found post-publication (2026-07-26)
 
@@ -398,6 +396,6 @@ EOF
 ---
 
 ## Change Log
-- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today. `Governance/02_frontmatter-standard.md` §1 gained `closed` as a fifth enum value for a finished note whose subject ended unsuccessfully — the partially-walked `AssumeRole` / `ExternalId` chain qualifies.
-- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and this room is permanently unsolved, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` filename suffix and the Open items section carry the unsolved state. Convention recorded in [[00_ctf-writeup-standard]] §1.1.
+- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today.
+- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and this room is permanently unsolved, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` filename suffix and the Open items section carry the unsolved state.
 - 2026-07-26 — Note created after two container sessions. Documents the solved scanner chain (LIVE row → AssumeRole+ExternalId → S3 non-current version → KMS decrypt), the reproducible replay script and its shell-hygiene traps, the verified principal inventory (2 roles, oracle-confirmed with a control), the full eliminated set (~55 IAM actions, five STS variants, four sweeps with retained artifacts), the working role-existence oracle plus the two lookalike oracles that do **not** work, and the single resume step. Flag not obtained; `status: draft`.

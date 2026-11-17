@@ -21,7 +21,6 @@ tags:
   - flash-loan
   - code-review
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Hollow-Courier-XFF-Hop-Count-Trust-Boundary]]"
 aliases:
   - Caldrin's Day Away
@@ -287,7 +286,6 @@ Concepts: flash-loan price-oracle manipulation · constant-product AMM spot rese
 ## Cross-references
 - [[HTB-CA2026-Hollow-Courier-XFF-Hop-Count-Trust-Boundary]]
 - [[HTB-CA2026-Withered-Registry-Broken-Access-Control-Privileged-Write]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-26 — Note created. Solved in a single transaction by flash-loan manipulation of a stamped constant-product spot reserve feeding a cached share price. Records the guard-coverage asymmetry as root cause (`leaveGoods` checks `activeBorrower()`; `recountHoldings` and `redeemClaim` do not, so shares can be repriced mid-loan even though they cannot be minted), why the hash-locked `PublicStampDesk` closes substitution but not manipulation, and the arithmetic verified twice — locally against unmodified `Setup.sol` on anvil, then against on-chain event data from the winning transaction. Includes the TCP1P launcher endpoint map, since roughly two thirds of session time went to provisioning rather than analysis. Points recorded as 975 from the scenario page and flagged as drift-prone in §12. Flag string operator-confirmed from `/api/flag` at solve time.

@@ -21,7 +21,6 @@ tags:
   - model-extraction
   - supply-chain
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Forked-Tongue-Tokenizer-Vocab-Merges-Divergence]]"
   - "[[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]"
 aliases:
@@ -345,9 +344,6 @@ Python 3.13 · numpy 2.x · PyTorch 2.13.0+cpu · urllib/http.cookiejar · zipfi
 - [[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]
 - [[HTB-CA2026-Obligation-Indexer-Stored-Dossier-Injection]]
 - [[HTB-CA2026-Memento-Skill-Persistence-Memory-Poisoning]]
-- [[00_ctf-writeup-standard]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-30 — Change Log reference to the writeup standard updated to its post-rename filename and un-backticked; a backticked wikilink is skipped by Obsidian's rename refactor.
-- 2026-07-28 — Note created. Four-stage solve documented: architecture recovery from storage sizes, ward/spine LSB extraction with CRC verification, substitute distillation to 99.58% agreement, 192/192 adversarial transfer, exclusive backdoor over 262 decoy marks, and the combined die. Authored against [[00_ctf-writeup-standard]] — full frontmatter schema, §0 macro steps, canonical tail order, honest-scope ATT&CK callout, and the optional Blind alleys section proposed in that file's §7.
+- 2026-07-28 — Note created. Four-stage solve documented: architecture recovery from storage sizes, ward/spine LSB extraction with CRC verification, substitute distillation to 99.58% agreement, 192/192 adversarial transfer, exclusive backdoor over 262 decoy marks, and the combined die.

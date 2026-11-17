@@ -18,8 +18,7 @@ tags:
   - Security
   - deserialization
   - php-object-injection
-related:
-  - "[[HTB]]"
+related: []
 aliases:
   - Provisioneds
   - CA2026 Provisioneds
@@ -186,11 +185,10 @@ sed -n '/function getDefaultIncludePaths/,/^    }/p' \
 - [ ] Flag once obtained; promote `status: draft` → `complete`.
 
 ## Cross-references
-- [[HTB]]
 - [[HTB-CA2026-Massagold-Stored-XSS-JSONP-CSP-Bypass]]
 - [[HTB-CA2026-Gatery-Elysia-Cookie-Signature-Bypass]]
 
 ## Change Log
-- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today. `Governance/02_frontmatter-standard.md` §1 gained `closed` as a fifth enum value for a finished note whose subject ended unsuccessfully. §6's eliminated-chain table and §8's single resume step remain the useful record if the room is ever revisited.
-- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and the gadget chain was never found, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` suffix and §6's eliminated-chain table carry the unsolved state, and §8's single resume step remains valid for anyone returning to it. Convention recorded in [[00_ctf-writeup-standard]] §1.1.
+- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today. §6's eliminated-chain table and §8's single resume step remain the useful record if the room is ever revisited.
+- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and the gadget chain was never found, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` suffix and §6's eliminated-chain table carry the unsolved state, and §8's single resume step remains valid for anyone returning to it.
 - 2026-07-24 — Initial partial write-up. Sink, pre-auth reachability, and oracle proven live; gadget chain open. Records confirmed facts, eliminated candidates (with reasons), the leading `__toString`/`FileLayout` LFI candidate, and the single `getDefaultIncludePaths` read that resolves it. `status: draft` (deliberately — challenge unsolved).

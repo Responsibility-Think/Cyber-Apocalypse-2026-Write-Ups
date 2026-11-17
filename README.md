@@ -87,6 +87,7 @@ Each note documents the full method, not just the solve path — the reasoning t
 
 ## Notes
 
+- **Credentials are truncated.** Passwords, access keys and credential hashes that appear in the evidence are shown truncated (for example `AKIA…RUOL`, `D1…26`), so no complete secret is published. File hashes and other IOCs are shown in full.
 - **Points** are HTB's dynamic values as recorded at solve time; four notes predate the field being captured and show `—`.
 - **Partial** marks a challenge that was worked but never flagged. Those write-ups document the approach and where it stalled — Bought Riot, Custody Engine, and Provisioneds.
 - *The Salt Crown* was solved offline after the submission window closed, so it does not appear in the scoreboard result.

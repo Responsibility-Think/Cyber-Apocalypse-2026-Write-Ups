@@ -21,7 +21,6 @@ tags:
   - Reverse_Engineering
   - Cryptography
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-First-Mark-RISCV-Custom-Opcode-Recovery]]"
   - "[[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]"
 aliases:
@@ -287,7 +286,6 @@ Concepts: virtualisation-based obfuscation · custom bytecode ISA recovery from 
 ## Cross-references
 - [[HTB-CA2026-First-Mark-RISCV-Custom-Opcode-Recovery]]
 - [[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: identification of an interpreter from section geometry, complete recovery of a 22-opcode custom VM ISA from the AArch64 dispatch tree, VM reimplementation in Python, identification of the embedded firmware as an 8-round SPN with a bijective S-box and GF(2)-linear mix layer, table layout of the program image, and full inversion recovering the 32-byte preimage and the flag.

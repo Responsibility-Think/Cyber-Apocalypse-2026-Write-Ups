@@ -26,8 +26,6 @@ tags:
   - jamming
   - detection
 related:
-  - "[[HTB]]"
-  - "[[CA2026-Hardware-category-kickoff]]"
   - "[[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]"
   - "[[HTB-CA2026-What-the-Shard-Displayed-I2C-SSD1306-Framebuffer-Reconstruction]]"
 aliases:
@@ -238,10 +236,8 @@ Split into the attack itself and the collection that enabled it.
 - Exact tool build used for the winning run is ambiguous: the banner printed `v1.0`, the operator recalls `v1.1`. No version-specific output appeared either way, so the question is moot for the result but the record is not clean
 
 ## Cross-references
-- [[CA2026-Hardware-category-kickoff]]
 - [[HTB-CA2026-Cadence-in-the-Cord-UART-Inter-Frame-Timing-Covert-Channel]]
 - [[HTB-CA2026-What-the-Shard-Displayed-I2C-SSD1306-Framebuffer-Reconstruction]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Solved: two-service RF simulation; web port proven to have no attacker surface across 780 requests; raw TCP console on the second port provides sniff/jam/transmit. 18-byte frame reverse-engineered (preamble, sync, `SLT` device ID, button, 16-bit BE counter, 6-byte keyed MAC). RollJam executed — two jammed fob presses captured while `CAR MISS reason=channel_jammed`, replayed after unjam for `result=exploit_unlock` at counter 18295. First attempt failed because a `--dry` verification step introduced human latency and the receiver advanced past both held frames; recorded as the primary method lesson. ATT&CK mapping split into attack chain and collection, all IDs flagged unverified.

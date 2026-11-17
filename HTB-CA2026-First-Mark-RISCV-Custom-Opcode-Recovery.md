@@ -20,7 +20,6 @@ tags:
   - Reverse_Engineering
   - riscv
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]"
   - "[[HTB-CA2026-Cinderbound-MicroPython-MPY-Rolling-XOR]]"
 aliases:
@@ -242,7 +241,6 @@ Concepts: RISC-V custom opcode space (`custom-0` / `custom-1`) · undocumented I
 ## Cross-references
 - [[HTB-CA2026-Ringtrue-MLP-Inversion-Int8-Keygen]]
 - [[HTB-CA2026-Cinderbound-MicroPython-MPY-Rolling-XOR]]
-- [[HTB]]
 
 ## Change Log
 - 2026-07-25 — Note created. Full solve documented: RV32IM bare-metal recon of a stripped image, identification of four undocumented `custom-0`/`custom-1` instructions, byte-complete file accounting, recovery of the `A`/`B`/`C` tables and loop structure, a failed 87,808-combination sweep and the structural reason it could not succeed, the four rune semantics including the stateful full-adder rune, and single-pass inversion recovering `cut_f0r_th3_P1NT`.

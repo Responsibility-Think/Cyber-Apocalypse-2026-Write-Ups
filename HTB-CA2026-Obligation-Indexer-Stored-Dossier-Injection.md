@@ -20,9 +20,7 @@ tags:
   - Security
   - AI_ML
   - prompt-injection
-related:
-  - "[[HTB]]"
-  - "[[CA2026-AI-LLM-category-kickoff]]"
+related: []
 aliases:
   - Obligation Indexer
   - CA2026 Obligation Indexer
@@ -34,7 +32,7 @@ updated: 2026-07-25T13:31:11.732Z
 
 > [!success] Solved
 > `HTB{l34k3d_d3b7s_thr0ugh_m3m0ry_p01s0n1ng}`
-> Second AI/LLM solve of CA2026. Live target, no source provided. Forked from [[CA2026-AI-LLM-category-kickoff]].
+> Second AI/LLM solve of CA2026. Live target, no source provided.
 
 ## 0. How the flag was obtained
 
@@ -248,9 +246,7 @@ Concepts: stored (second-order) prompt injection · persistent user-writable age
 - No source was provided for this challenge; the system prompt and tool schemas were never seen. All statements about tool structure are inferred from the `[System]` lines and observed behavior.
 
 ## Cross-references
-- [[CA2026-AI-LLM-category-kickoff]]
 - [[HTB-CA2026-Memento-Skill-Persistence-Memory-Poisoning]]
-- [[HTB]]
 - [[HTB-CA2026-Massagold-Stored-XSS-JSONP-CSP-Bypass]]
 - [[HTB-CA2026-Gatery-Elysia-Cookie-Signature-Bypass]]
 - [[HTB-CA2026-Provisioneds-Joomla-PHP-Object-Injection-PARTIAL]]

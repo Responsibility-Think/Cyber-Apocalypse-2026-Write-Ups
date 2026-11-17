@@ -27,7 +27,6 @@ tags:
   - cloudtrail
   - anti-forensics
 related:
-  - "[[HTB]]"
   - "[[HTB-CA2026-Hollow-Courier-XFF-Hop-Count-Trust-Boundary]]"
 aliases:
   - Wrong Stamp
@@ -42,6 +41,8 @@ updated: 2026-07-26T02:43:53.741Z
 > **Scenario Pwned 8/8** — 2026-07-25 22:32 local / 2026-07-26T02:32Z. No `HTB{}` string; the room grades eight short-answer questions.
 > Ephemeral LocalStack instance `154.57.164.75` — briefing `:32007`, AWS API `:30296`. Read-only investigator credentials issued per spawn.
 
+> [!note] Credential values (passwords, access keys, credential hashes) are truncated for publication.
+
 ## 0. How the answers were obtained
 
 1. Fingerprinted the two unlabelled ports: bare `GET` returns `{"__type":"AccessDeniedException"…}` on the AWS API port, `<!DOCTYPE html>` on the briefing port.
@@ -49,7 +50,7 @@ updated: 2026-07-26T02:43:53.741Z
 3. Probed the access envelope. `DescribeTrails`, `ListAllMyBuckets`, `ListUsers`, `ListRoles` — all denied. `cloudtrail:LookupEvents` is the only permitted call, so S3 log-object collection is off the table.
 4. Drained `LookupEvents` through `NextToken` — 270 events, not the 50 a single call returns — and passed each `.CloudTrailEvent` through `jq`'s `fromjson` to reach nested fields.
 5. Sorted by `eventTime` and found **two** `StopLogging` events. Discarded the earlier one: it carries `errorCode: InternalFailure`, and `StartLogging` follows 5.6 s later.
-6. Frequency-analysed `sourceIPAddress`, `userAgent`, and `accessKeyId`. One key, `AKIALSFIGHTYU5LBJZPI`, appears under two irreconcilable runtimes — 253 events from an EC2 host, 6 from something else.
+6. Frequency-analysed `sourceIPAddress`, `userAgent`, and `accessKeyId`. One key, `AKIA…JZPI`, appears under two irreconcilable runtimes — 253 events from an EC2 host, 6 from something else.
 7. Falsified three tempting-but-artifactual signals (§7) before committing to the user-agent split as the finding.
 8. Answered the eight questions off the frozen local `events.json` (§8). Container timed out twice mid-investigation; analysis survived because collection had already landed on disk.
 
@@ -128,7 +129,7 @@ There are two `StopLogging` events, and the chronologically **first** one is bai
 02:17:49.809  StartLogging    root  127.0.0.1
 02:17:50.550  CreateUser      root  127.0.0.1   -> stonepass-warden
 02:17:51.170  PutUserPolicy   root  127.0.0.1
-02:17:52.419  CreateAccessKey root  127.0.0.1   -> AKIALSFIGHTYU5LBJZPI
+02:17:52.419  CreateAccessKey root  127.0.0.1   -> AKIA…JZPI
 ```
 
 Three independent disqualifiers:
@@ -154,7 +155,7 @@ The durable signal is that one access key presents two mutually exclusive execut
 | `exec-env` | **`EC2`** | **absent** |
 | `mfaAuthenticated` | (absent) | `false` |
 
-Same key `AKIALSFIGHTYU5LBJZPI`, same principal ARN, same account. A credential travels between hosts; a Python interpreter does not downgrade four minor Botocore versions, swap kernel builds, and shed its EC2 instance-metadata marker between calls. **That is the fresh tool mark on the old stamp.**
+Same key `AKIA…JZPI`, same principal ARN, same account. A credential travels between hosts; a Python interpreter does not downgrade four minor Botocore versions, swap kernel builds, and shed its EC2 instance-metadata marker between calls. **That is the fresh tool mark on the old stamp.**
 
 Both fields split at exactly the 253/6 boundary with zero bleed. Every other candidate field bleeds — see §7.
 
@@ -192,7 +193,7 @@ It does not separate attacker from warden — it separates **seeded from live**.
 
 **`sessionContext.creationDate`.** Present on 17 events, absent on 239 — the same seeded/live boundary. Where present it always equals the event's own `eventTime`. Artifact.
 
-**Key issued after it was used.** `CreateAccessKey` returns `AKIALSFIGHTYU5LBJZPI` at `02:17:52.419Z`, yet that key signs 253 events dated 07-24 onward. This maps so cleanly onto *"the stamp looks old"* that it is genuinely tempting — and it is the same seeding artifact. Submitting it as the flaw would have been wrong.
+**Key issued after it was used.** `CreateAccessKey` returns `AKIA…JZPI` at `02:17:52.419Z`, yet that key signs 253 events dated 07-24 onward. This maps so cleanly onto *"the stamp looks old"* that it is genuinely tempting — and it is the same seeding artifact. Submitting it as the flaw would have been wrong.
 
 > [!important] Transferable invariant
 > Any field whose split coincides with a scenario's **provisioning boundary** is suspect. Test a candidate discriminator against the *legitimate* subset, not only against the attacker subset.
@@ -217,7 +218,7 @@ jq -r '.[] | select(.sourceIPAddress=="192.0.2.55")
   | [.eventTime,.eventName,(.errorCode//"OK"),.eventID] | @tsv' events.json | column -t
 
 # The seeded/live falsification test
-jq -r '.[] | select(.userIdentity.accessKeyId=="AKIALSFIGHTYU5LBJZPI")
+jq -r '.[] | select(.userIdentity.accessKeyId=="AKIA…JZPI")
   | [.sourceIPAddress, .userIdentity.principalId] | @tsv' events.json | sort | uniq -c
 ```
 
@@ -307,7 +308,6 @@ Concepts: cloud log forensics · credential-reuse attribution · client-runtime 
 
 ## Cross-references
 - [[HTB-CA2026-Hollow-Courier-XFF-Hop-Count-Trust-Boundary]] — the inverse failure: a defender *trusting* attacker-controlled provenance metadata, where this note *uses* it as evidence with the matching caveat (§5)
-- [[HTB]]
 
 ## Change Log
 - 2026-07-26 — Note created. Full investigation documented: the read-only access envelope and the collection plan it forces, `LookupEvents` pagination and the `CloudTrailEvent` string-encoding trap, separation of the 270 events into seeded / provisioning / attack populations, disqualification of the decoy root `StopLogging`, the user-agent-drift discriminator with its attacker-controlled caveat, three falsified generator artifacts, the eight submitted answers, and the detection and remediation set.

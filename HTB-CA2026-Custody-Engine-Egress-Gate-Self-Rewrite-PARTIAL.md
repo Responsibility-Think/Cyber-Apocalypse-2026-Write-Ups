@@ -19,9 +19,7 @@ tags:
   - Security
   - AI_ML
   - prompt-injection
-related:
-  - "[[HTB]]"
-  - "[[00_CA2026-event-roll-up]]"
+related: []
 aliases:
   - Custody Engine
   - CA2026 Custody Engine
@@ -84,7 +82,7 @@ const WRITE_ROOTS = ["/srv/work", "/srv/config"];
 
 Freshness is the flaw. The agent can rewrite the allowlist between one tool call and the next, and the gate honours the new contents immediately. **A control re-read from a location the controlled party can write is not a control.**
 
-This is the fifth instance in this event of a mechanism asserting a property adjacent to the one that matters — the gate proves *the allowlist currently permits this*, never *an administrator permitted this*. See [[00_CA2026-event-roll-up]] §1.
+This is the fifth instance in this event of a mechanism asserting a property adjacent to the one that matters — the gate proves *the allowlist currently permits this*, never *an administrator permitted this*.
 
 ### Confirmed exploit trace
 
@@ -323,13 +321,10 @@ Five carried the evidentiary weight, and their results are recorded above rather
 - [[HTB-CA2026-Memento-Skill-Persistence-Memory-Poisoning]]
 - [[HTB-CA2026-Forked-Tongue-Tokenizer-Vocab-Merges-Divergence]]
 - [[HTB-CA2026-Assay-Model-Extraction-Weight-LSB-Backdoor]]
-- [[00_CA2026-event-roll-up]]
-- [[00_ctf-writeup-standard]]
-- [[HTB]]
 
 ## Change Log
-- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today. `Governance/02_frontmatter-standard.md` §1 gained `closed` as a fifth enum value for a finished note whose subject ended unsuccessfully — which is exactly this room. `complete` overstated the outcome and `draft` implied resumable work; neither was right before the value existed.
-- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and the objective was never found, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` suffix, the header callout and §14's resume prerequisite carry the unsolved state. Convention recorded in [[00_ctf-writeup-standard]] §1.1.
+- 2026-07-30 — `status` moved `complete` → `closed`, superseding the change made earlier today. `complete` overstated the outcome and `draft` implied resumable work; neither was right before the value existed.
+- 2026-07-30 — `status` moved `draft` → `complete`. The event is closed and the objective was never found, so `draft` — which implies work in progress — was the wrong signal. `status` now tracks whether the **note** is finished, not whether the room was solved; the `-PARTIAL` suffix, the header callout and §14's resume prerequisite carry the unsolved state.
 - 2026-07-30 — §15 added, recording the `custody_engine/` folder and its deletion on 2026-07-29 after review: 43 scripts, none reusable, five carrying the evidentiary weight behind §4, §7, §12 and §14. Read coverage before deletion was 25 of 43. Written past-tense deliberately — the scripts no longer exist, and a present-tense index would point at nothing.
 - 2026-07-28 — External enumeration added to §13: `/api/health` is the only route not referenced by the client and is inert; no static file serving; `win.svg` 403 (gated on `won`) and `fail.svg` 404 on all variants (`fail` never set); the ~700 open ports on the spawn host are other tenants' NodePorts, not a second port on this container. Confirms Open Items 1–3 are unreachable from the player's position rather than merely unfound.
-- 2026-07-28 — Note created as PARTIAL. Documents the demonstrated egress-gate exploit (allowlist rewrite → gate re-read → control plane reached), three unexercised deny-matching flaws, ~300 measured filter verdicts characterising an LLM guard that rejects its own shipped skills and returns non-deterministic verdicts, the SVG-as-instrument technique, the field-publication table, the exhausted 16-cell grid, and six method lessons. Open items name the read channel as the prerequisite for any further attempt. Kickoff cross-link omitted: `CA2026-AI-LLM-category-kickoff` was pruned from the tree before this note was written.
+- 2026-07-28 — Note created as PARTIAL. Documents the demonstrated egress-gate exploit (allowlist rewrite → gate re-read → control plane reached), three unexercised deny-matching flaws, ~300 measured filter verdicts characterising an LLM guard that rejects its own shipped skills and returns non-deterministic verdicts, the SVG-as-instrument technique, the field-publication table, the exhausted 16-cell grid, and six method lessons. Open items name the read channel as the prerequisite for any further attempt.
